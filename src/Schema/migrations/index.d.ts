@@ -1,35 +1,34 @@
-import type { $RE } from '../../types'
 import type { ColumnSchema, TableName, TableSchema, TableSchemaSpec, SchemaVersion } from '../index'
 
-export type CreateTableMigrationStep = $RE<{
+export type CreateTableMigrationStep = Readonly<{
   type: 'create_table'
   schema: TableSchema
 }>
 
-export type AddColumnsMigrationStep = $RE<{
+export type AddColumnsMigrationStep = Readonly<{
   type: 'add_columns'
   table: TableName<any>
   columns: ColumnSchema[]
   unsafeSql?: (_: string) => string
 }>
 
-export type SqlMigrationStep = $RE<{
+export type SqlMigrationStep = Readonly<{
   type: 'sql'
   sql: string
 }>
 
 export type MigrationStep = CreateTableMigrationStep | AddColumnsMigrationStep | SqlMigrationStep
 
-type Migration = $RE<{
+type Migration = Readonly<{
   toVersion: SchemaVersion
   steps: MigrationStep[]
 }>
 
-type SchemaMigrationsSpec = $RE<{
+type SchemaMigrationsSpec = Readonly<{
   migrations: Migration[]
 }>
 
-export type SchemaMigrations = $RE<{
+export type SchemaMigrations = Readonly<{
   validated: true
   minVersion: SchemaVersion
   maxVersion: SchemaVersion

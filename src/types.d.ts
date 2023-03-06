@@ -4,8 +4,6 @@ export type $NonMaybeType<T> = T
 
 export type $ObjMap<O, T> = { [K in keyof O]: T }
 
-export type $RE<Type> = Readonly<Type>
-
 export type $Keys<Type> = { k: keyof Type }
 
 export type Array<Type> = Type[]

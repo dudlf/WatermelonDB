@@ -1,6 +1,4 @@
 // NOTE: Only require files needed (critical path on web)
-import type { $RE } from '../types'
-
 // eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import type Model from '../Model'
 
@@ -8,7 +6,7 @@ export type TableName<T extends Model> = string
 export type ColumnName = string
 
 export type ColumnType = 'string' | 'number' | 'boolean'
-export type ColumnSchema = $RE<{
+export type ColumnSchema = Readonly<{
   name: ColumnName
   type: ColumnType
   isOptional?: boolean
@@ -23,7 +21,7 @@ export type TableSchemaSpec = {
   unsafeSql?: (_: string) => string
 }
 
-export type TableSchema = $RE<{
+export type TableSchema = Readonly<{
   name: TableName<any>
   // depending on operation, it's faster to use map or array
   columns: ColumnMap
@@ -43,7 +41,7 @@ export type AppSchemaSpec = {
   unsafeSql?: (_: string, __: AppSchemaUnsafeSqlKind) => string
 }
 
-export type AppSchema = $RE<{
+export type AppSchema = Readonly<{
   version: SchemaVersion
   tables: TableMap
   unsafeSql?: (_: string, __: AppSchemaUnsafeSqlKind) => string

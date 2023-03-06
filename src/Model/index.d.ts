@@ -1,6 +1,5 @@
 import type { Observable, BehaviorSubject } from '../utils/rx'
 import { Unsubscribe } from '../utils/subscriptions'
-import type { $RE } from '../types'
 
 import type Database from '../Database'
 import type Collection from '../Collection'
@@ -14,8 +13,8 @@ export type RecordId = string
 // NOTE: status 'disposable' MUST NOT ever appear in a persisted record
 export type SyncStatus = 'synced' | 'created' | 'updated' | 'deleted' | 'disposable'
 
-export type BelongsToAssociation = $RE<{ type: 'belongs_to'; key: ColumnName }>
-export type HasManyAssociation = $RE<{ type: 'has_many'; foreignKey: ColumnName }>
+export type BelongsToAssociation = Readonly<{ type: 'belongs_to'; key: ColumnName }>
+export type HasManyAssociation = Readonly<{ type: 'has_many'; foreignKey: ColumnName }>
 export type AssociationInfo = BelongsToAssociation | HasManyAssociation
 export type Associations = { [tableName: TableName<any>]: AssociationInfo }
 
