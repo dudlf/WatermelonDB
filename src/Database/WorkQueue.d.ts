@@ -1,6 +1,5 @@
 import type Model from '../Model'
 import type Database from './index'
-import { $ReadOnlyArray } from '../types'
 
 export interface ReaderInterface {
   callReader<T>(reader: () => Promise<T>): Promise<T>
@@ -8,7 +7,7 @@ export interface ReaderInterface {
 
 export interface WriterInterface extends ReaderInterface {
   callWriter<T>(writer: () => Promise<T>): Promise<T>
-  batch(...records: $ReadOnlyArray<Model | Model[] | null | void | false>): Promise<void>
+  batch(...records: ReadonlyArray<Model | Model[] | null | void | false>): Promise<void>
 }
 
 type WorkQueueItem<T> = {

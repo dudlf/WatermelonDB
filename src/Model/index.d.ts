@@ -1,6 +1,6 @@
 import type { Observable, BehaviorSubject } from '../utils/rx'
 import { Unsubscribe } from '../utils/subscriptions'
-import type { $RE, $ReadOnlyArray } from '../types'
+import type { $RE } from '../types'
 
 import type Database from '../Database'
 import type Collection from '../Collection'
@@ -99,7 +99,7 @@ export default class Model {
   // See: Database.batch()
   // To be used by Model @writer methods only!
   // TODO: protect batch,callWriter,... from being used outside a @reader/@writer
-  batch(...records: $ReadOnlyArray<Model | null | void | false>): Promise<void>
+  batch(...records: ReadonlyArray<Model | null | void | false>): Promise<void>
 
   // To be used by Model @writer methods only!
   callWriter<T>(action: () => Promise<T>): Promise<T>

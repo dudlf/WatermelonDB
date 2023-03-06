@@ -13,7 +13,7 @@ import type LocalStorage from './LocalStorage'
 import WorkQueue from './WorkQueue'
 import type { ReaderInterface, WriterInterface } from './WorkQueue'
 
-import { $ReadOnlyArray, Class } from '../types'
+import { Class } from '../types'
 
 type DatabaseProps = {
   adapter: DatabaseAdapter
@@ -45,7 +45,7 @@ export default class Database {
   // Executes multiple prepared operations
   // (made with `collection.prepareCreate` and `record.prepareUpdate`)
   // Note: falsy values (null, undefined, false) passed to batch are just ignored
-  batch(...records: $ReadOnlyArray<Model | Model[] | null | void | false>): Promise<void>
+  batch(...records: ReadonlyArray<Model | Model[] | null | void | false>): Promise<void>
 
   // Enqueues a Writer - a block of code that, when it's running, has a guarantee that no other Writer
   // is running at the same time.
