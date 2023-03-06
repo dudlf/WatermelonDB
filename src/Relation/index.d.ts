@@ -1,4 +1,4 @@
-import { $NonMaybeType, $Call } from '../types'
+import { $Call } from '../types'
 import type { Observable } from '../utils/rx'
 
 import type Model from '../Model'
@@ -23,7 +23,7 @@ export default class Relation<T extends Model> {
 
   _columnName: ColumnName
 
-  _relationTableName: TableName<$NonMaybeType<T>>
+  _relationTableName: TableName<NonNullable<T>>
 
   _isImmutable: boolean
 
@@ -33,7 +33,7 @@ export default class Relation<T extends Model> {
 
   constructor(
     model: Model,
-    relationTableName: TableName<$NonMaybeType<T>>,
+    relationTableName: TableName<NonNullable<T>>,
     columnName: ColumnName,
     options: Options,
   )
