@@ -1,13 +1,8 @@
-import { $Call } from '../types'
 import type { Observable } from '../utils/rx'
 
 import type Model from '../Model'
 import type { RecordId } from '../Model'
 import type { ColumnName, TableName } from '../Schema'
-
-type ExtractRecordIdNonOptional = <T extends Model = Model>(value: T) => RecordId
-type ExtractRecordIdOptional = <T extends Model = Model>(value: T) => RecordId
-type ExtractRecordId = ExtractRecordIdNonOptional & ExtractRecordIdOptional
 
 export type Options = {
   isImmutable: boolean
@@ -38,9 +33,11 @@ export default class Relation<T extends Model> {
     options: Options,
   )
 
-  get id(): $Call<ExtractRecordId, T>
+  // TODO
+  // does it can be null or undefined?
+  get id(): RecordId | null | undefined
 
-  set id(newId: $Call<ExtractRecordId, T>)
+  set id(newId: RecordId | null | undefined)
 
   fetch(): Promise<T>
 
