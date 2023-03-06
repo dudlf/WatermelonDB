@@ -22,8 +22,6 @@ import type {
   MigrationEvents,
 } from './type'
 
-import { $Shape } from '../../types'
-
 export type { SQL, SQLiteArg, SQLiteQuery }
 
 export default class SQLiteAdapter implements DatabaseAdapter {
@@ -49,7 +47,7 @@ export default class SQLiteAdapter implements DatabaseAdapter {
 
   get initializingPromise(): Promise<void>
 
-  testClone(options?: $Shape<SQLiteAdapterOptions>): Promise<SQLiteAdapter>
+  testClone(options?: Partial<SQLiteAdapterOptions>): Promise<SQLiteAdapter>
 
   _getName(name?: string): string
 

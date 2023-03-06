@@ -1,5 +1,3 @@
-export type $Shape<T> = T
-
 export type $ObjMap<O, T> = { [K in keyof O]: T }
 
 // TODO: FIX TS

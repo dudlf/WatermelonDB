@@ -16,8 +16,6 @@ import type {
 
 import LokiDispatcher from './dispatcher'
 
-import { $Shape } from '../../types'
-
 export type LokiAdapterOptions = {
   dbName?: string
   schema: AppSchema
@@ -86,7 +84,7 @@ export default class LokiJSAdapter implements DatabaseAdapter {
 
   constructor(options: LokiAdapterOptions)
 
-  testClone(options?: $Shape<LokiAdapterOptions>): Promise<LokiJSAdapter>
+  testClone(options?: Partial<LokiAdapterOptions>): Promise<LokiJSAdapter>
 
   find(table: TableName<any>, id: RecordId, callback: ResultCallback<CachedFindResult>): void
 
