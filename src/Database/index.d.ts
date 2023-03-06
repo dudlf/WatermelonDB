@@ -13,12 +13,12 @@ import type LocalStorage from './LocalStorage'
 import WorkQueue from './WorkQueue'
 import type { ReaderInterface, WriterInterface } from './WorkQueue'
 
-import { $ReadOnlyArray, $Exact, Class } from '../types'
+import { $ReadOnlyArray, Class } from '../types'
 
-type DatabaseProps = $Exact<{
+type DatabaseProps = {
   adapter: DatabaseAdapter
   modelClasses: Class<Model>[] | Model[]
-}>
+}
 
 export function setExperimentalAllowsFatalError(): void
 

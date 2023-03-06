@@ -1,5 +1,3 @@
-import { $Exact } from '../types'
-
 import type { Database, RecordId, TableName, Model } from '..'
 import type { DirtyRaw } from '../RawRecord'
 
@@ -8,32 +6,33 @@ import type { MigrationSyncChanges } from '../Schema/migrations/getSyncChanges'
 
 export type Timestamp = number
 
-export type SyncTableChangeSet = $Exact<{
+export type SyncTableChangeSet = {
   created: DirtyRaw[]
   updated: DirtyRaw[]
   deleted: RecordId[]
-}>
+}
 export type SyncDatabaseChangeSet = { [tableName: TableName<any>]: SyncTableChangeSet }
 
-export type SyncLocalChanges = $Exact<{ changes: SyncDatabaseChangeSet; affectedRecords: Model[] }>
+export type SyncLocalChanges = { changes: SyncDatabaseChangeSet; affectedRecords: Model[] }
 
-export type SyncPullArgs = $Exact<{
+export type SyncPullArgs = {
   lastPulledAt?: Timestamp
   schemaVersion: SchemaVersion
   migration: MigrationSyncChanges
-}>
+}
 export type SyncPullResult =
-  | $Exact<{ changes: SyncDatabaseChangeSet; timestamp: Timestamp }>
-  | $Exact<{ syncJson: string }>
-  | $Exact<{ syncJsonId: number }>
+  | { changes: SyncDatabaseChangeSet; timestamp: Timestamp }
+  | { syncJson: string }
+  | { syncJsonId: number }
 
 export type SyncRejectedIds = { [tableName: TableName<any>]: RecordId[] }
 
-export type SyncPushArgs = $Exact<{ changes: SyncDatabaseChangeSet; lastPulledAt: Timestamp }>
+export type SyncPushArgs = { changes: SyncDatabaseChangeSet; lastPulledAt: Timestamp }
 
-export type SyncPushResult = $Exact<{ experimentalRejectedIds?: SyncRejectedIds }>
+export type SyncPushResult = { experimentalRejectedIds?: SyncRejectedIds }
 
-type SyncConflict = $Exact<{ local: DirtyRaw; remote: DirtyRaw; resolved: DirtyRaw }>
+type SyncConflict = { local: DirtyRaw; remote: DirtyRaw; resolved: DirtyRaw }
+
 export type SyncLog = {
   startedAt?: Date
   lastPulledAt?: number
@@ -56,7 +55,7 @@ export type SyncConflictResolver = (
   resolved: DirtyRaw,
 ) => DirtyRaw
 
-export type SyncArgs = $Exact<{
+export type SyncArgs = {
   database: Database
   pullChanges: (_: SyncPullArgs) => Promise<SyncPullResult>
   pushChanges?: (_: SyncPushArgs) => Promise<SyncPushResult | undefined | void>
@@ -85,9 +84,9 @@ export type SyncArgs = $Exact<{
   // changes are passed as arguments. An advanced user can use this for example to show some UI to the user
   // when processing a very large sync (could be useful for replacement syncs). Note that remote change count
   // is NaN in turbo mode.
-  onWillApplyRemoteChanges?: (info: $Exact<{ remoteChangeCount: number }>) => Promise<void>
-}>
+  onWillApplyRemoteChanges?: (info: { remoteChangeCount: number }) => Promise<void>
+}
 
 export function synchronize(args: SyncArgs): Promise<void>
 
-export function hasUnsyncedChanges({ database }: $Exact<{ database: Database }>): Promise<boolean>
+export function hasUnsyncedChanges({ database }: { database: Database }): Promise<boolean>

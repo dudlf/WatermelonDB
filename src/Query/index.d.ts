@@ -1,7 +1,6 @@
 import { Observable } from '../utils/rx'
 import type { ArrayOrSpreadFn } from '../utils/fp'
 import type { Unsubscribe, SharedSubscribable } from '../utils/subscriptions'
-import { $Exact } from '../types'
 
 import type { Clause, QueryDescription } from '../QueryDescription'
 import type Model from '../Model'
@@ -9,17 +8,17 @@ import type { AssociationInfo, RecordId } from '../Model'
 import type Collection from '../Collection'
 import type { TableName, ColumnName } from '../Schema'
 
-export type QueryAssociation = $Exact<{
+export type QueryAssociation = {
   from: TableName<any>
   to: TableName<any>
   info: AssociationInfo
-}>
+}
 
-export type SerializedQuery = $Exact<{
+export type SerializedQuery = {
   table: TableName<any>
   description: QueryDescription
   associations: QueryAssociation[]
-}>
+}
 
 interface QueryCountProxy {
   then<U>(

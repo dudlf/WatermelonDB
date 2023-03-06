@@ -16,9 +16,9 @@ import type {
 
 import LokiDispatcher from './dispatcher'
 
-import { $Exact, $Shape } from '../../types'
+import { $Shape } from '../../types'
 
-export type LokiAdapterOptions = $Exact<{
+export type LokiAdapterOptions = {
   dbName?: string
   schema: AppSchema
   migrations?: SchemaMigrations
@@ -36,12 +36,12 @@ export type LokiAdapterOptions = $Exact<{
   // Note that this only works when `useWebWorker: false`
   onQuotaExceededError?: (error: Error) => void
   // extra options passed to Loki constructor
-  extraLokiOptions?: $Exact<{
+  extraLokiOptions?: {
     autosave?: boolean
     autosaveInterval?: number
-  }>
+  }
   // extra options passed to IncrementalIDBAdapter constructor
-  extraIncrementalIDBOptions?: $Exact<{
+  extraIncrementalIDBOptions?: {
     // Called when this adapter is forced to overwrite contents of IndexedDB.
     // This happens if there's another open tab of the same app that's making changes.
     // You might use it as an opportunity to alert user to the potential loss of data
@@ -64,12 +64,12 @@ export type LokiAdapterOptions = $Exact<{
     // Collections (by table name) that Loki should deserialize lazily. This is only profitable for
     // collections that are most likely not required for launch - making everything lazy makes it slower
     lazyCollections?: TableName<any>[]
-  }>
+  }
   // -- internal --
   _testLokiAdapter?: LokiMemoryAdapter
   _onFatalError?: (error: Error) => void // (experimental)
   _betaLoki?: boolean // (experimental)
-}>
+}
 
 export default class LokiJSAdapter implements DatabaseAdapter {
   static adapterType: string

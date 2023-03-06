@@ -1,8 +1,6 @@
 // @flow
-import { $Exact } from '../../../types'
-
 // lightweight type-only Result (Success(T) | Error) monad
-export type Result<T> = $Exact<{ value: T }> | $Exact<{ error: Error }>
+export type Result<T> = { value: T } | { error: Error }
 
 export type ResultCallback<T> = (r: Result<T>) => void
 

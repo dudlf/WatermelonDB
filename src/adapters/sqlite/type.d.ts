@@ -1,7 +1,6 @@
 import type { ResultCallback } from '../../utils/fp/Result'
 import type { AppSchema } from '../../Schema'
 import type { SchemaMigrations } from '../../Schema/migrations'
-import { $Exact } from '../../types'
 
 export type SQL = string
 export type SQLiteArg = string | boolean | number | null
@@ -13,7 +12,7 @@ export type MigrationEvents = {
   onError: (error: Error) => void
 }
 
-export type SQLiteAdapterOptions = $Exact<{
+export type SQLiteAdapterOptions = {
   dbName?: string
   schema: AppSchema
   migrations?: SchemaMigrations
@@ -32,7 +31,7 @@ export type SQLiteAdapterOptions = $Exact<{
   // Sets exclusive file locking mode in sqlite. Use this ONLY if you need to - e.g. seems to fix
   // mysterious "database is malformed" issues on JSI+Android when using Headless JS
   usesExclusiveLocking?: boolean
-}>
+}
 
 export type DispatcherType = 'asynchronous' | 'asynchronous-v2' | 'jsi'
 

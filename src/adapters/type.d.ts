@@ -7,7 +7,6 @@ import type { ResultCallback } from '../utils/fp/Result'
 
 import type { SQLiteQuery } from './sqlite/type'
 import type { Loki } from './lokijs/type'
-import type { $Exact } from '../types'
 
 export type CachedFindResult = RecordId | RawRecord | undefined
 export type CachedQueryResult = Array<RecordId | RawRecord>
@@ -18,9 +17,7 @@ export type BatchOperation =
   | ['markAsDeleted', TableName<any>, RecordId]
   | ['destroyPermanently', TableName<any>, RecordId]
 
-export type UnsafeExecuteOperations =
-  | $Exact<{ sqls: SQLiteQuery[] }>
-  | $Exact<{ loki: (_: Loki) => void }>
+export type UnsafeExecuteOperations = { sqls: SQLiteQuery[] } | { loki: (_: Loki) => void }
 
 export interface DatabaseAdapter {
   schema: AppSchema

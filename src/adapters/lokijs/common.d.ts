@@ -1,7 +1,6 @@
 import { type Result } from '../../utils/fp/Result'
 import type { CachedQueryResult, CachedFindResult } from '../type'
 import type { RecordId } from '../../Model'
-import { $Exact } from '../../types'
 
 export type WorkerExecutorType =
   | 'setUp'
@@ -26,15 +25,15 @@ export type WorkerResponseData = CachedQueryResult | CachedFindResult | number |
 
 export type CloneMethod = 'shallowCloneDeepObjects' | 'immutable' | 'deep'
 
-export type WorkerAction = $Exact<{
+export type WorkerAction = {
   id: number
   type: WorkerExecutorType
   payload: WorkerExecutorPayload
   cloneMethod: CloneMethod
   returnCloneMethod: CloneMethod
-}>
+}
 
-export type WorkerResponse = $Exact<{
+export type WorkerResponse = {
   id: number
   result: Result<WorkerResponseData>
-}>
+}

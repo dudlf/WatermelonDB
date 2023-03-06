@@ -3,16 +3,14 @@
 import type { SchemaMigrations } from '../index'
 import type { TableName, ColumnName, SchemaVersion } from '../../index'
 
-import { $Exact } from '../../../types'
-
-export type MigrationSyncChanges = $Exact<{
+export type MigrationSyncChanges = {
   from: SchemaVersion
   tables: TableName<any>[]
-  columns: $Exact<{
+  columns: {
     table: TableName<any>
     columns: ColumnName[]
-  }>[]
-}> | null
+  }[]
+} | null
 
 export default function getSyncChanges(
   migrations: SchemaMigrations,

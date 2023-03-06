@@ -1,4 +1,3 @@
-import { $Exact } from '../../types'
 import type { Database } from '../..'
 
 import type { Timestamp, SyncLog } from '../index'
@@ -20,11 +19,11 @@ export function setLastPulledSchemaVersion(
   version: SchemaVersion,
 ): Promise<void>
 
-type MigrationInfo = $Exact<{
+type MigrationInfo = {
   schemaVersion: SchemaVersion
   migration: MigrationSyncChanges
   shouldSaveSchemaVersion: boolean
-}>
+}
 
 export function getMigrationInfo(
   database: Database,

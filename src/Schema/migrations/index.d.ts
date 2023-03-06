@@ -1,4 +1,4 @@
-import type { $RE, $Exact } from '../../types'
+import type { $RE } from '../../types'
 import type { ColumnSchema, TableName, TableSchema, TableSchemaSpec, SchemaVersion } from '../index'
 
 export type CreateTableMigrationStep = $RE<{
@@ -44,10 +44,10 @@ export function addColumns({
   table,
   columns,
   unsafeSql,
-}: $Exact<{
+}: {
   table: TableName<any>
   columns: ColumnSchema[]
   unsafeSql?: (_: string) => string
-}>): AddColumnsMigrationStep
+}): AddColumnsMigrationStep
 
 export function unsafeExecuteSql(sql: string): SqlMigrationStep

@@ -1,5 +1,5 @@
 // NOTE: Only require files needed (critical path on web)
-import type { $Exact, $RE } from '../types'
+import type { $RE } from '../types'
 
 // eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import type Model from '../Model'
@@ -17,11 +17,11 @@ export type ColumnSchema = $RE<{
 
 export type ColumnMap = { [name: ColumnName]: ColumnSchema }
 
-export type TableSchemaSpec = $Exact<{
+export type TableSchemaSpec = {
   name: TableName<any>
   columns: ColumnSchema[]
   unsafeSql?: (_: string) => string
-}>
+}
 
 export type TableSchema = $RE<{
   name: TableName<any>
@@ -37,11 +37,11 @@ export type SchemaVersion = number
 
 export type AppSchemaUnsafeSqlKind = 'setup' | 'create_indices' | 'drop_indices'
 
-export type AppSchemaSpec = $Exact<{
+export type AppSchemaSpec = {
   version: number
   tables: TableSchema[]
   unsafeSql?: (_: string, __: AppSchemaUnsafeSqlKind) => string
-}>
+}
 
 export type AppSchema = $RE<{
   version: SchemaVersion
