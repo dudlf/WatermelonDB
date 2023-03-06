@@ -1,5 +1,3 @@
-export type $ObjMap<O, T> = { [K in keyof O]: T }
-
 // TODO: FIX TS
 export type $Call<F, T> = any
 
