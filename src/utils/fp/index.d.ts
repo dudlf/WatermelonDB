@@ -1,5 +1,3 @@
-// @flow
-
 export { default as groupBy } from './groupBy'
 export { default as allPromises } from './allPromises'
 export { default as identicalArrays } from './identicalArrays'

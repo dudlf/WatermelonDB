@@ -1,4 +1,3 @@
-// @flow
 // lightweight type-only Result (Success(T) | Error) monad
 export type Result<T> = { value: T } | { error: Error }
 

@@ -1,5 +1,3 @@
-// @flow
-
 import type { Observable } from '../__wmelonRxShim'
 
 // Equivalent to observable |> distinctUntilChanged |> publishReplayLatestWhileConnected |> refCount

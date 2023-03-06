@@ -1,5 +1,3 @@
-// @flow
-
 import type { SchemaMigrations } from '../index'
 import type { TableName, ColumnName, SchemaVersion } from '../../index'
 

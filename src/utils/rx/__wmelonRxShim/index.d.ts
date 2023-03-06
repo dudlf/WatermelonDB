@@ -1,5 +1,3 @@
-// @flow
-
 // NOTE: All Rx imports in WatermelonDB MUST go through this file
 // this is a magic shim that can be replaced via babel onto another shim that imports Rx files
 // from different locations

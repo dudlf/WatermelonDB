@@ -1,4 +1,3 @@
-// @flow
 import { Observable, Subject } from '../utils/rx'
 import type { ResultCallback } from '../utils/fp/Result'
 import type { ArrayOrSpreadFn } from '../utils/fp'

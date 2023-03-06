@@ -1,5 +1,3 @@
-// @flow
-
 import invariant from '../../common/invariant'
 import type { TableName, ColumnName } from '../../../Schema'
 
